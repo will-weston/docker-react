@@ -7,3 +7,16 @@ before_install:
 
 script:
   - docker run willweston/docker-react:test npm run test -- --coverage
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-1"
+  app: "will-docker-react"
+  env: "WillDockerReact-env"
+  bucket_name: "elasticbeanstalk-us-east-1-639769761355"
+  bucket_path: "will-docker-react"
+  on:
+    branch: master
+  access_key_id: $MY_KEY_ID
+  secret_access_key: $MY_KEY2_ID
+  
