@@ -1,22 +1,20 @@
 sudo: required
 services:
   - docker
-
 before_install:
   - docker build -t willweston/docker-react:test -f dev/Dockerfile .
-
 script:
   - docker run willweston/docker-react:test npm run test -- --coverage
-
 deploy:
   provider: elasticbeanstalk
-  region: "us-east-1"
-  app: "will-docker-react"
-  env: "WillDockerReact-env"
-  bucket_name: "elasticbeanstalk-us-east-1-639769761355"
-  bucket_path: "will-docker-react"
+  region: us-east-1
+  app: will-docker-react
+  env: WillDockerReact-env
+  bucket_name: elasticbeanstalk-us-east-1-639769761355
+  bucket_path: will-docker-react
   on:
     branch: master
-  access_key_id: $MY_KEY_ID
-  secret_access_key: $MY_KEY2_ID
-  
+  access_key_id:
+    secure: "BD+o2zL1IXE/3Ld3Om2t2AunGircec9Ie4d+cprLL6Ty9uGBVjDLn1YQrpPWTapsmj2Y5KnELRWNHR5YIZ3xWoI05xNkFlFaZHc/uSgdkTZHCGwgKsl/ZkqA/gYT6YFFVRbPBS8/kqWPCkprjWozzKL/t4IujaEJWcoOmSoisLTpfYj7zNgwCxkHjcziHIWxZG6EGciXI/uivW/bABfcRcghvYft0yEQLtTG1F0xOocE7vFfUBlmdtjL03poou6/7S5XIHasXiYunhSHwSfF34jeGiTsd7aVDZfS/QuxE934Gm0YOHbJx3T5xH53ind25O/JWpuzjNiaBun6GLQuMoz6xob+UMXFNBUZcQMNIcS1eQ/omug86tWnvSK9mhk9+C9q6V+FRU6TFnIfySCnzUM0fbKUzCUH4AXhRPT+BTr9Zgh00RxEqrCyyhdjQeeONHYE4tZPaVS2Tyy6DME4A/C73jiukdzZfidDvXlVMgPVRIN+c0E5lo3ZFuEPa5IFr1ZR6GLhvAXIa+lIw5uTQcrXAixA9995Kk9w4/d+8N2Twkt3shn52YcF2/dP9njQvOHs0E+IIml60cEu7zl6fxzk5qbnlU3qjaV2zeoDyVoEcve7E1YfQgIljAou7H3zXLuU28NOPJXj8za/ji2yxy5N8L5rD9ckU8q1PQhDzFg="
+  secret_access_key:
+    secure: "mg7rvEeEJJYjqCOWyLeTAeB7lcExyTyX7zyecqEJVxBm6cf5H19mXcipwgBGYUfqj2DfROXCnX4OgYAgqY5JvfRPYu9aXfhvqsANtYGnPSSDF11yErM1mCec4ZgYMOXZt5ePl4InJxI7yhmge6sXZ1M4q+ouAg7xK33Qna4yjwPGyNdFZmXBj7g9BmP5bomms5qgVac3I9PH5wWA3dvRkBLIL3mfgmoFCQRD8JHhN6WMY3GiDZiiSJiVVYD878IZ8Sb6DOwhiCu75DG3sYjzAQKhD2KL49E8QMZ002KAvvDJacDqax9dpTU5sndcac4LYdfH2yRW4EINWL4bBKCPuqYjGXZ9yDb+Cy+1xsUIxF6vbGRF4KqXDElDM89XKYhuaiZ0ZuwAa0BUJDXf+w+fZmhFJ+ssKjAtKbuPX81ScAR6BXwP3Q+fYC89SNASFlKEC7U7pCMznr3VstsPonsL9g6LahlGoUpTgdbY0TbDF2CY4wRda5/j/ZIz14yemt3bu+/nckNRTfEEnXgM5P5zv60BPTOD8VaocttmTaVA0UXRcnE6hti3ltrIjnEK/4CBL6qfEhE4/1EAyfdpL2bvOxNPuE7W8xJ/TpM0m5hHOL0t/pKv5kLvBfF7oTjoaWfmA8UT5uRw7TKFu8Nr3T16tR3PtC293GwUTTAGg2zOyyc="
